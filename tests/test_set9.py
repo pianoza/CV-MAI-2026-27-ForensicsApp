@@ -377,5 +377,42 @@ class Set9ComparisonAndEvaluationTests(unittest.TestCase):
         self.assertEqual(BLOOD_CELL_COLORS[2], "blue")
 
 
+class Set9DialogTests(unittest.TestCase):
+    """Test dialog functions and parameter parsing for Set 9."""
+
+    def test_ask_coco_to_yolo_parameters_headless(self) -> None:
+        from forensics_app.tools.dialogs import ask_coco_to_yolo_parameters
+        res = ask_coco_to_yolo_parameters(None, default_input="/coco", default_output="/yolo")
+        self.assertIsNotNone(res)
+        self.assertEqual(res["input_folder"], "/coco")
+        self.assertEqual(res["output_folder"], "/yolo")
+        self.assertTrue(res["create_yaml"])
+
+    def test_ask_yolo_training_parameters_headless(self) -> None:
+        from forensics_app.tools.dialogs import ask_yolo_training_parameters
+        res = ask_yolo_training_parameters(None, default_yaml="/data.yaml")
+        self.assertIsNotNone(res)
+        self.assertEqual(res["data_yaml"], "/data.yaml")
+        self.assertEqual(res["epochs"], 50)
+        self.assertEqual(res["batch"], 16)
+        self.assertEqual(res["name"], "from_scratch_50e_v1")
+        self.assertEqual(res["classes"], [0, 1, 2])
+
+    def test_ask_yolo_inference_parameters_headless(self) -> None:
+        from forensics_app.tools.dialogs import ask_yolo_inference_parameters
+        res = ask_yolo_inference_parameters(None, current_image_loaded=True)
+        self.assertIsNotNone(res)
+        self.assertEqual(res["model_path"], "yolo11n.pt")
+        self.assertEqual(res["colormap"], "tab20")
+        self.assertAlmostEqual(res["conf"], 0.25)
+
+    def test_ask_yolo_comparison_parameters_headless(self) -> None:
+        from forensics_app.tools.dialogs import ask_yolo_comparison_parameters
+        res = ask_yolo_comparison_parameters(None, default_image="/test.jpg")
+        self.assertIsNotNone(res)
+        self.assertEqual(res["image_path"], "/test.jpg")
+        self.assertEqual(res["mode"], "side_by_side")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
+import os
+from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog, messagebox, simpledialog, ttk
+from typing import Any
 
 IMAGE_FILETYPES = [
     ("Image files", "*.png *.jpg *.jpeg *.bmp *.tif *.tiff *.webp"),
