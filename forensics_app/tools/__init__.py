@@ -25,6 +25,11 @@ from .face_detection import FaceDetectionTool
 from .eigenface_builder import EigenfaceBuilderTool
 from .face_recognition import FaceRecognitionTool
 from .bovw_tools import BoVWCodebookTool, BoVWHistogramTool, BoVWClassifierTool
+from .cnn_tools import (
+    CNNFeatureProjectionTool,
+    CNNInferenceTool,
+    CNNTrainingTool,
+)
 from .yolo_tools import (
     YOLOComparisonTool,
     YOLODataConversionTool,
@@ -70,6 +75,10 @@ def build_tool_registry() -> ToolRegistry:
             BoVWCodebookTool(),
             BoVWHistogramTool(),
             BoVWClassifierTool(),
+            # Set 8: Image Classification using CNN
+            CNNTrainingTool(),
+            CNNInferenceTool(),
+            CNNFeatureProjectionTool(),
             # Set 9: Object Detection with YOLO
             YOLOInferenceTool(),
             YOLODataConversionTool(),
@@ -82,6 +91,9 @@ def build_tool_registry() -> ToolRegistry:
 __all__ = [
     "ToolRegistry",
     "build_tool_registry",
+    "CNNTrainingTool",
+    "CNNInferenceTool",
+    "CNNFeatureProjectionTool",
     "YOLOInferenceTool",
     "YOLODataConversionTool",
     "YOLOTrainingTool",
