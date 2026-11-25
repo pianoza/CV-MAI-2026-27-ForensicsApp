@@ -27,6 +27,7 @@ forensics_app/data/cifar10/channels4_profile_result*.png
 forensics_app/data/cifar10/cifar10_cnn_passport.json*
 forensics_app/data/cifar10/cifar10_features_test500.npz
 forensics_app/face_detection_yunet_2023mar.onnx
+lab10/
 
 # CNN weights and samples
 forensics_app/data/cifar10/*.weights.h5*

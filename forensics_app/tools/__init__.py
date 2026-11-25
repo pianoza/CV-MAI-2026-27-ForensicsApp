@@ -36,6 +36,8 @@ from .yolo_tools import (
     YOLOInferenceTool,
     YOLOTrainingTool,
 )
+from .clip_tools import CLIPZeroShotTool
+from .unet_tools import UNetSegmentationTool, UNetTrainingTool
 
 
 def build_tool_registry() -> ToolRegistry:
@@ -84,6 +86,11 @@ def build_tool_registry() -> ToolRegistry:
             YOLODataConversionTool(),
             YOLOTrainingTool(),
             YOLOComparisonTool(),
+            # Set 10: CLIP Zero-Shot Classification
+            CLIPZeroShotTool(),
+            # Set 11: U-Net Segmentation
+            UNetTrainingTool(),
+            UNetSegmentationTool(),
         ]
     )
 
@@ -98,4 +105,7 @@ __all__ = [
     "YOLODataConversionTool",
     "YOLOTrainingTool",
     "YOLOComparisonTool",
+    "CLIPZeroShotTool",
+    "UNetTrainingTool",
+    "UNetSegmentationTool",
 ]
